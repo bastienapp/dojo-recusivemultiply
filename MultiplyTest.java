@@ -1,6 +1,7 @@
 import junit.framework.*;
 import org.junit.Test;
 import java.util.Random;
+import static org.mockito.Mockito.*;
 
 public class MultiplyTest extends TestCase {
 
@@ -58,5 +59,19 @@ public class MultiplyTest extends TestCase {
 		int a = r.nextInt(21) - 10;
 		int b = r.nextInt(21) - 10;
 		assertEquals(a * b, test.multiply(a, b));
+	}
+
+	// I don't know a way in Java to test if the * operator is present
+	// but I can know if the method uses recursion
+	@Test
+	public void testRecusion() {
+		Multiply test = new Multiply();
+		Multiply spyMultiply = spy(test);
+		Random r = new Random();
+		int a = 3 + r.nextInt(7);
+		int b = 3 + r.nextInt(7);
+		int count = Math.min(a, b);
+		spyMultiply.multiply(a, b);
+		verify(spyMultiply, atLeast(count)).multiply(anyInt(), anyInt());
 	}
 }

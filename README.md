@@ -13,6 +13,6 @@ In order to multiply `a` and `b`, you will recursively add `a` `b` times.
 ```
 
 ```
-javac -cp .:junit-4.12.jar MultiplyTest.java
-java -cp .:junit-4.12.jar:hamcrest-core-1.3.jar org.junit.runner.JUnitCore MultiplyTest
+javac -cp .:junit-4.12.jar:mockito-all-1.10.19.jar MultiplyTest.java
+java -cp .:junit-4.12.jar:hamcrest-core-1.3.jar:mockito-all-1.10.19.jar org.junit.runner.JUnitCore MultiplyTest
 ```
